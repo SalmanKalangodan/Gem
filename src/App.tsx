@@ -1,14 +1,11 @@
-import './App.css'
-import Login from './Pages/Compeny/Commen/Login'
-import Registration from './Pages/Compeny/Commen/Registration'
+import CompanyRout from './Routes/Company/CompanyRout'
 
 function App() {
 
 
   return (
     <>
-      <Login />
-      <Registration />
+      <CompanyRout/>
     </>
   )
 }
