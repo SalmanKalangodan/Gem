@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Navbar from './Navbar'
 import Footer from './Footer'
 import { useNavigate } from 'react-router-dom'
@@ -6,6 +6,12 @@ import { useNavigate } from 'react-router-dom'
 
 const Home: React.FC = () => {
     const navigate = useNavigate()
+    const token  = localStorage.getItem("accessToken")
+useEffect(()=>{
+    if(token){
+        navigate("/companies/dashboard")
+    }
+},[token])
     return (
         <>
             <Navbar />
