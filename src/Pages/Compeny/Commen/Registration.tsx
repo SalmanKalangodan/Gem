@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { Register } from '../../../Redux/Thunk/company/Registerthunk'
 import { toast } from 'react-toastify'
+import { useNavigate } from 'react-router-dom'
+
 
 
 const Registration : React.FC = () => {
@@ -10,16 +12,22 @@ const Registration : React.FC = () => {
     const [password , setPassword] = useState<string>("")
     const [cpassword , setCpassword] = useState<string>("")
     const dispatch = useDispatch<any>()
+    const navigate = useNavigate()
+            
     const HandleSubmit = () =>{
         if(password !== cpassword && cpassword !== ""){
             toast.error("password not macth")
             return
         }
-        dispatch(Register({name, email , password}))
-        setName("")
-        setPassword("")
-        setEmail("")
-        setCpassword("")
+        dispatch(Register({name, email , password})).then(()=>{
+            setName("")
+            setPassword("")
+            setEmail("")
+            setCpassword("")
+            navigate('/companies/login')
+        })
+        
+     
     }
   return (
     <>

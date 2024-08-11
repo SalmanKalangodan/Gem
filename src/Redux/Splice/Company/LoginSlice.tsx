@@ -1,10 +1,10 @@
 import {createSlice} from "@reduxjs/toolkit"
-import { Register } from "../../Thunk/company/Registerthunk"
 import { toast } from "react-toastify"
+import { Logins } from "../../Thunk/company/LoginThunk"
 
 
 
-export const RegisterSlice = createSlice({
+export const LoginSlice = createSlice({
     name : "Register",
     initialState :{
         isLoding : false,
@@ -15,17 +15,18 @@ export const RegisterSlice = createSlice({
 
     },
     extraReducers(builder) {
-        builder.addCase(Register.pending , (state)=>{
+        builder.addCase(Logins.pending , (state)=>{
             state.isLoding =true
         })
-        builder.addCase(Register.fulfilled , (state, action)=>{
+        builder.addCase(Logins.fulfilled , (state, action)=>{
+            localStorage.setItem("accessToken", action.payload.token)
             state.data = action.payload
             state.isLoding =false
             toast.success(action.payload)
             console.log(state.data);
             
         })
-        builder.addCase(Register.rejected , (state )=>{    
+        builder.addCase(Logins.rejected , (state )=>{    
             state.error = state.error
             state.isLoding =false
             toast.error("error")
@@ -34,4 +35,4 @@ export const RegisterSlice = createSlice({
 })
 
 
-export default RegisterSlice.reducer
+export default LoginSlice.reducer

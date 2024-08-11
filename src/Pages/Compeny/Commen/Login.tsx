@@ -1,6 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { Logins } from '../../../Redux/Thunk/company/LoginThunk';
+import { useNavigate } from 'react-router-dom';
 
 const Login:React.FC = () => {
+
+    const [email , setEmail] = useState("")
+    const [password ,setPassword] =useState("")
+    const dispacth = useDispatch<any>()
+    const navigate = useNavigate()
+    const HandleLogin = () =>{
+        console.log(email);
+        
+      dispacth(Logins({ email , password})).then(()=>{
+        navigate("/companies/dashboard")
+      })
+    }
   return (
     <div className="min-h-screen bg-gray-100 text-gray-900 flex justify-center">
       <div className="max-w-screen-xl m-0 sm:m-10 bg-white shadow sm:rounded-lg flex justify-center flex-1">
@@ -46,13 +61,15 @@ const Login:React.FC = () => {
                   className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
                   type="email"
                   placeholder="Email"
+                  onChange={(e)=>setEmail(e.target.value)}
                 />
                 <input
                   className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
                   type="password"
                   placeholder="Password"
+                  onChange={(e)=>setPassword(e.target.value)}
                 />
-                <button className="mt-5 tracking-wide font-semibold bg-green-400 text-white w-full py-4 rounded-lg hover:bg-green-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
+                <button className="mt-5 tracking-wide font-semibold bg-green-400 text-white w-full py-4 rounded-lg hover:bg-green-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none" onClick={HandleLogin}>
                   <svg
                     className="w-6 h-6 -ml-2"
                     fill="none"

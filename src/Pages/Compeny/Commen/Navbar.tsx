@@ -3,6 +3,9 @@ import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
 const navigate = useNavigate()
+const token  = localStorage.getItem("accessToken")
+
+
   return (
     <nav className="bg-white py-4">
     <div className="container mx-auto flex justify-between items-center p-2">
@@ -21,9 +24,9 @@ const navigate = useNavigate()
           <a href="#" className="text-gray-600 hover:text-green-500 transition duration-300">Contact</a>
         </li>
       </ul>
-      <button className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 transition duration-300 " onClick={()=>navigate('/companies/login')}>
+      { !token ?<button className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 transition duration-300 " onClick={()=>navigate('/companies/login')}>
         Login
-      </button>
+      </button> : <div className="px-4 py-2"></div>}
     </div>
   </nav>
   );
