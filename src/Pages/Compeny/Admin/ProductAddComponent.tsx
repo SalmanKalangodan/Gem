@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Sidebar from './Sidebar';
 import Navbar from '../Commen/Navbar';
+import nextId from "react-id-generator"
 
 interface Product {
   id: string;
@@ -26,7 +27,10 @@ const ProductAddComponent = () => {
     gstPercentage: '0%',
     type : "goods"
   });
-console.log(product.type);
+
+  useEffect(()=>{
+    setProduct({...product,["id"]:nextId("pr-id-")})
+  },[])
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;

@@ -117,49 +117,48 @@ const LandingPage: React.FC = () => {
     ];
 
     return (
-        <div className="flex flex-col items-center w-full mx-auto p-8 bg-gray-50 rounded-lg">
+        <div className="flex flex-col items-center w-full mx-auto p-8 rounded-lg">
             <h1 className="text-3xl font-bold text-green-700 mb-6">
                 Welcome to Accounting Dashboard
             </h1>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full mb-6">
-                <div className="bg-white rounded-lg shadow-md p-6 flex items-center">
-                    {/* <SalesIcon className="w-12 h-12 text-green-500 mr-4" /> */}
-                    <div>
-                        <h2 className="text-lg font-bold text-green-600">Total Sales</h2>
-                        <p className="text-4xl font-bold text-gray-700 mt-2">$20,000</p>
-                    </div>
-                </div>
-                <div className="bg-white rounded-lg shadow-md p-6 flex items-center">
-                    {/* <SalesIcon className="w-12 h-12 text-green-500 mr-4" /> */}
-                    <div>
-                        <h2 className="text-lg font-bold text-green-600">Today's Sales</h2>
-                        <p className="text-4xl font-bold text-gray-700 mt-2">$3,000</p>
-                    </div>
-                </div>
-                <div className="bg-white rounded-lg shadow-md p-6 flex items-center">
-                    {/* <PurchasesIcon className="w-12 h-12 text-green-500 mr-4" /> */}
-                    <div>
-                        <h2 className="text-lg font-bold text-green-600">Today's Purchases</h2>
-                        <p className="text-4xl font-bold text-gray-700 mt-2">$1,500</p>
-                    </div>
-                </div>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full mb-6">
-                <div className="bg-white rounded-lg shadow-md p-6 flex items-center">
-                    {/* <InvoicesIcon className="w-12 h-12 text-green-500 mr-4" /> */}
-                    <div>
-                        <h2 className="text-lg font-bold text-green-600">Today's Invoices</h2>
-                        <p className="text-4xl font-bold text-gray-700 mt-2">$2,500</p>
-                    </div>
-                </div>
-                <div className="bg-white rounded-lg shadow-md p-6 flex items-center">
-                    {/* <PaymentsIcon className="w-12 h-12 text-green-500 mr-4" /> */}
-                    <div>
-                        <h2 className="text-lg font-bold text-green-600">Today's Payments</h2>
-                        <p className="text-4xl font-bold text-gray-700 mt-2">$2,000</p>
-                    </div>
-                </div>
-            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full mb-4">
+    <div className="bg-gradient-to-r from-green-400 to-green-600 rounded-lg shadow-lg p-4 flex items-center transform hover:scale-105 transition-transform duration-300">
+        <div>
+            <h2 className="text-md font-bold text-white">Total Sales</h2>
+            <p className="text-2xl font-bold text-white mt-1">$20,000</p>
+        </div>
+    </div>
+    <div className="bg-gradient-to-r from-blue-400 to-blue-600 rounded-lg shadow-lg p-4 flex items-center transform hover:scale-105 transition-transform duration-300">
+        <div>
+            <h2 className="text-md font-bold text-white">Today's Sales</h2>
+            <p className="text-2xl font-bold text-white mt-1">$3,000</p>
+        </div>
+    </div>
+    <div className="bg-gradient-to-r from-purple-400 to-purple-600 rounded-lg shadow-lg p-4 flex items-center transform hover:scale-105 transition-transform duration-300">
+        <div>
+            <h2 className="text-md font-bold text-white">Today's Purchases</h2>
+            <p className="text-2xl font-bold text-white mt-1">$1,500</p>
+        </div>
+    </div>
+</div>
+<div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full mb-4">
+    <div className="bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-lg shadow-lg p-4 flex items-center transform hover:scale-105 transition-transform duration-300">
+        <div>
+            <h2 className="text-md font-bold text-white">Today's Invoices</h2>
+            <p className="text-2xl font-bold text-white mt-1">$2,500</p>
+        </div>
+    </div>
+    <div className="bg-gradient-to-r from-red-400 to-red-600 rounded-lg shadow-lg p-4 flex items-center transform hover:scale-105 transition-transform duration-300">
+        <div>
+            <h2 className="text-md font-bold text-white">Today's Payments</h2>
+            <p className="text-2xl font-bold text-white mt-1">$2,000</p>
+        </div>
+    </div>
+</div>
+
+
+
+
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full mb-6">
                 <div className="bg-white rounded-lg shadow-md p-6 md:col-span-2">
                     <h2 className="text-lg font-bold text-green-600">Total Invoices</h2>
