@@ -13,7 +13,7 @@ const Login:React.FC = () => {
         console.log(email);
         
       dispacth(Logins({ email , password})).then(()=>{
-        navigate("/companies/dashboard")
+        navigate("/companies/dashboard/Dashboard")
       })
     }
   return (

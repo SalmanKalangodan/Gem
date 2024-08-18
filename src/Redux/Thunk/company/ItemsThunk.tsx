@@ -2,6 +2,18 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { companies_axios } from "../../../config/axios/Company_axios";
 import { toast } from "react-toastify";
 
+interface Product {
+    id: string;
+    name: string;
+    companyName: string;
+    distributor: string;
+    buyPrice: number;
+    sellPrice: number;
+    gstIncluded: boolean;
+    gstPercentage: string;
+    type : string
+  }
+
 export const GetPid = createAsyncThunk("/create/pid" , async ()=>{
     try {
         const res = await companies_axios.get('/create/prid')
@@ -12,13 +24,13 @@ export const GetPid = createAsyncThunk("/create/pid" , async ()=>{
 })
 
 
-export const Create_Items = createAsyncThunk("/create/items", async (data)=>{
-  const res =  await companies_axios.post('/create/items',data).then((res)=>{
+export const Create_Items = createAsyncThunk("/create/items", async (product : Product)=>{
+  const res =  await companies_axios.post('/create/items',product).then((res)=>{
         toast.success(res.data)
     }).catch((err)=>{
         toast.error(err.message)
     })
-    return {data , res}
+    return {product , res}
 })
 
 
