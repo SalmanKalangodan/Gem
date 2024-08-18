@@ -1,9 +1,10 @@
 import { useParams } from 'react-router-dom';
-import Navbar from '../Commen/Navbar';
-import Sidebar from './Sidebar';
-import LandingPage from './LandingPage';
+import Navbar from '../../../Components/Commen/Navbar';
+import Sidebar from '../../../Components/Admin/Sidebar';
+import LandingPage from '../../../Components/Admin/LandingPage';
 // import ProductAddComponent from './ProductAddComponent';
-import ItemListing from './Items';
+import ItemListing from '../../../Components/Admin/Items';
+import Bills from '../../../Components/Admin/Bills';
 
 
 const AccountingDashboard = () => {
@@ -17,7 +18,7 @@ const AccountingDashboard = () => {
       <Sidebar />
       </div>
       <div className='overflow-scroll m-0 w-full no-scrollbar'>
-      {route === "Dashboard"?   <LandingPage /> : route === "Items" ? <ItemListing /> : null }
+      {route === "Dashboard"?   <LandingPage /> : route === "Items" ? <ItemListing /> : route === "Bills" ? <Bills /> : null }
       </div>
     </div>
     </>

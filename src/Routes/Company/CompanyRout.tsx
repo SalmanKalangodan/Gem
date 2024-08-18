@@ -4,7 +4,7 @@ import Registration from '../../Pages/Compeny/Commen/Registration'
 import Home from '../../Pages/Compeny/Commen/Home'
 import Login from '../../Pages/Compeny/Commen/Login'
 import AccountingDashboard from '../../Pages/Compeny/Admin/AdminDashboard'
-import ProductAddComponent from '../../Pages/Compeny/Admin/ProductAddComponent'
+import ProductAddComponent from '../../Components/Admin/ProductAddComponent'
 
 const CompanyRout : React.FC = () => {
   return (

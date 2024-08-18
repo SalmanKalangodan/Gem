@@ -1,5 +1,8 @@
-import  { useState } from 'react';
+import  { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { GetItems } from '../../Redux/Thunk/company/ItemsThunk';
+import { RootState } from '../../Redux/Store/Store';
 
 interface Item {
   type: string;
@@ -42,7 +45,12 @@ const ItemListing = () => {
   const [items, setItems] = useState<Item[]>(mockData);
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate()
+  const dispacth = useDispatch<any>()
 
+  useEffect(()=>{
+    dispacth(GetItems())
+  },[])
+  const {data} = useSelector((state : RootState) => state.ItemsSlice)
   const handleAddItem = () => {
     navigate("/companies/dashboard/items/add")
   };
@@ -79,35 +87,35 @@ const ItemListing = () => {
           New
         </button>
       </div>
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto text-sm">
         <table className="w-full table-auto bg-gray-50 rounded-lg">
           <thead className="bg-green-100 text-green-700">
             <tr>
+            <th className="px-4 py-2 text-left">No.</th>
               <th className="px-4 py-2 text-left">Image</th>
               <th className="px-4 py-2 text-left">Type</th>
               <th className="px-4 py-2 text-left">Product ID</th>
               <th className="px-4 py-2 text-left">Manufacturer</th>
               <th className="px-4 py-2 text-left">Brand</th>
-              <th className="px-4 py-2 text-left">Description</th>
               <th className="px-4 py-2 text-left">Buy Price</th>
               <th className="px-4 py-2 text-left">Sell Price</th>
               <th className="px-4 py-2 text-left">GST %</th>
             </tr>
           </thead>
           <tbody>
-            {items.map((item, index) => (
+            {data&&data?.map((item, index) => (
               <tr key={index} className="hover:bg-green-50 transition duration-200">
+                <td className="px-2 py-2 border-b bg-green-100 text-center">{index}</td>
                 <td className="px-4 py-2 border-b">
-                  <img src={item.image} alt="Item" className="w-10 h-10 rounded-full" />
+                  <img src={item.image || 'https://via.placeholder.com/32'} alt="Item" className="w-10 h-10 rounded-full" />
                 </td>
                 <td className="px-4 py-2 border-b">{item.type}</td>
-                <td className="px-4 py-2 border-b">{item.productID}</td>
-                <td className="px-4 py-2 border-b">{item.manufacturer}</td>
-                <td className="px-4 py-2 border-b">{item.brand}</td>
-                <td className="px-4 py-2 border-b">{item.description}</td>
-                <td className="px-4 py-2 border-b">{item.buyPrice}</td>
-                <td className="px-4 py-2 border-b">{item.sellPrice}</td>
-                <td className="px-4 py-2 border-b">{item.gstPercentage}%</td>
+                <td className="px-4 py-2 border-b">{item.pr_id}</td>
+                <td className="px-4 py-2 border-b">{item.Manufacturer}</td>
+                <td className="px-4 py-2 border-b">{item.Brand}</td>
+                <td className="px-4 py-2 border-b">{item.buying_pricce}</td>
+                <td className="px-4 py-2 border-b">{item.selling_price}</td>
+                <td className="px-4 py-2 border-b">{item.gst}</td>
               </tr>
             ))}
           </tbody>
